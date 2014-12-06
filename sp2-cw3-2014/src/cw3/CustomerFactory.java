@@ -6,7 +6,7 @@ public class CustomerFactory {
 		
 	}
 
-	public Customer createCustomer(final int noFloors) {
+	public Customer createRandomCustomer(final int noFloors) {
 		
 		Customer cust = new RandomCustomer(noFloors);
 		

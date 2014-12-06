@@ -5,12 +5,12 @@ import java.util.Random;
 public class RandomCustomer implements Customer {
 	
 	/* Properties */
-	static int customerCount = 0;
-	int currentFloor;
-	int destinationFloor;
-	int id;
-	boolean inElevator;
-	boolean finished;
+	public static int customerCount = 0;
+	private int currentFloor;
+	private int destinationFloor;
+	private int id;
+	private boolean inElevator;
+	private boolean finished;
 	
 	/* Initialisation Block */
 	{
@@ -18,6 +18,7 @@ public class RandomCustomer implements Customer {
 		this.inElevator = false;
 		this.finished = false;
 		this.currentFloor = 0;
+		this.destinationFloor =0;
 	}
 	
 	/* Constructors */
