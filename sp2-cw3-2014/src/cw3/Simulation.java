@@ -11,13 +11,19 @@ public class Simulation {
 
 	public static void main(String[] args) {
 
+		final int noFloors = 20;
+		
 		CustomerFactory custFact = new CustomerFactory();
 		
-		List<Customer> list = new ArrayList<Customer>();
+		Customer[] customers = new Customer[8];
 		
+		for(int i = 0; i < customers.length; i++) {
+			customers[i] = custFact.createCustomer(noFloors);
+		}
 		
-
-		
+		for(Customer c : customers) {
+			System.out.println(c.toString());
+		}
 
 	}
 
