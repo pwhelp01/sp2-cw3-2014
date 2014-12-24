@@ -3,7 +3,7 @@ package cw3;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultBuilding implements Building {
+public class DefaultBuilding implements Building, Cloneable {
 	
 	int noFloors;
 	int noCustomers;
@@ -39,4 +39,18 @@ public class DefaultBuilding implements Building {
 	    return result.toString();
 	}
 
+	@Override
+	public DefaultBuilding clone() {
+		try {
+			DefaultBuilding result = (DefaultBuilding) super.clone();
+			result.noFloors = this.noFloors;
+			result.noCustomers = this.noCustomers;
+			result.floors = this.floors.clone();
+			result.customers = this.customers.clone();
+		}
+		catch(CloneNotSupportedException e) {
+			throw new AssertionError();
+		}
+		
+	}
 }
