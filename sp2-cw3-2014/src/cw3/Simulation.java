@@ -52,6 +52,10 @@ public class Simulation {
 		this.defaultBuilding = buildFactory.createDefaultBuilding(noFloors, noCustomers);
 
 		/* Clone default building into optimised building so we can compare */
+		this.optimisedBuilding = this.defaultBuilding.clone();
+		
+		System.out.println(this.defaultBuilding.toString());
+		System.out.println(this.optimisedBuilding.toString());
 		
 		
 	}

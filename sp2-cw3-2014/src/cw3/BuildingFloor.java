@@ -2,7 +2,7 @@ package cw3;
 
 import java.util.List;
 
-public class BuildingFloor implements Floor {
+public class BuildingFloor implements Floor, Cloneable {
 	
 	private int floorNumber;
 	private List<Customer> waitingCustomers;

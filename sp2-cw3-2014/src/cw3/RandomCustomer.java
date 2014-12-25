@@ -2,7 +2,7 @@ package cw3;
 
 import java.util.Random;
 
-public class RandomCustomer implements Customer {
+public class RandomCustomer implements Customer, Cloneable {
 	
 	/* Properties */
 	public static int customerCount = 0;
@@ -51,12 +51,24 @@ public class RandomCustomer implements Customer {
 		return this.inElevator;
 	}
 	
+	public void setInElevator(final boolean IN_ELEVATOR) {
+		this.inElevator = IN_ELEVATOR;
+	}
+	
 	public boolean getFinished() {
 		return this.finished;
+	}
+	
+	public void setFinished(final Boolean IS_FINISHED) {
+		this.finished = IS_FINISHED;
 	}
 
 	public int getCurrentFloor() {
 		return this.currentFloor;
+	}
+	
+	public void setCurrentFloor(final int FLOOR) {
+		this.currentFloor = FLOOR;
 	}
 	
 	public int getDestinationFloor() {
@@ -88,6 +100,29 @@ public class RandomCustomer implements Customer {
 		    
 		  }
 	
+	
+	/**
+	 * Clone a Customer object
+	 * <p>
+	 * Based on Effective Java p.57
+	 * @return
+	 */
+	@Override
+	public RandomCustomer clone() {
+		try {
+			RandomCustomer result = (RandomCustomer) super.clone();
+			result.currentFloor = this.currentFloor;
+			result.destinationFloor = this.destinationFloor;
+			result.finished = this.finished;
+			result.id = this.id;
+			result.inElevator = this.inElevator;
+			return result;
+		}
+		catch(CloneNotSupportedException e) {
+			throw new AssertionError();
+		}
+		
+	}
 	
 	
 }

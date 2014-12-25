@@ -1,5 +1,9 @@
 package cw3;
 
-public interface Building {
+import java.util.List;
 
+public interface Building {
+	public Building clone();
+	public List<Customer> getCustomers();
+	public void startElevator();
 }
