@@ -43,4 +43,19 @@ public class ElevatorFactory {
 	}
 
 	
+	/**
+	 * Returns a new OptimisedElevator object
+	 * <p>
+	 * OptimisedElevators use priority queues to only visit necessary floors
+	 * 
+	 * @param NO_FLOORS Number of floors in the building
+	 * @return OptimisedElevator Elevator object with the optimised algorithm
+	 */
+	public Elevator createOptimisedElevator(final int NO_FLOORS) {
+		
+		Elevator elev = new OptimisedElevator(NO_FLOORS);
+		return elev;
+		
+	}
+	
 }

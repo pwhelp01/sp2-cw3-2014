@@ -87,6 +87,11 @@ public class DefaultBuilding implements Building, Cloneable {
 	}
 	
 	
+	public int getElevatorMoves() {
+		return this.elevator.getMoves();
+	}
+	
+	
 	/**
 	 * Return contextual information about the DefaultBuilding's
 	 * properties

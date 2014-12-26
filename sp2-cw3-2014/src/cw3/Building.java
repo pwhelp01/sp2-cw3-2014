@@ -22,4 +22,6 @@ public interface Building {
 	public Building clone();
 	public List<Customer> getCustomers();
 	public void startElevator();
+	public void setElevator(final Elevator NEW_ELEVATOR);
+	public int getElevatorMoves();
 }

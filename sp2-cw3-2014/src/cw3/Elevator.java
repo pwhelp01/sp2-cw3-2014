@@ -21,5 +21,6 @@ import java.util.List;
 public interface Elevator {
 
 	public void start(List<Customer> customers);
+	public int getMoves();
 
 }
