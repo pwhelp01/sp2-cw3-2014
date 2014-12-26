@@ -31,8 +31,8 @@ public class CustomerFactory {
 	 * <p>
 	 * RandomCustomers have randomised current and destination floors
 	 * 
-	 * @param NO_FLOORS
-	 * @return RandomCustomer object
+	 * @param NO_FLOORS Number of floors in the building
+	 * @return RandomCustomer Customer with current / destination floors
 	 */
 	public Customer createRandomCustomer(final int NO_FLOORS) {
 		

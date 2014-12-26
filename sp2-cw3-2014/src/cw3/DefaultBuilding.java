@@ -35,7 +35,7 @@ public class DefaultBuilding implements Building, Cloneable {
 	 * be floor 1
 	 * 
 	 * @param NO_FLOORS The number of floors 
-	 * @param NO_CUSTOMERS
+	 * @param NO_CUSTOMERS The number of customers to populate the building with
 	 */
 	public DefaultBuilding(final int NO_FLOORS, final int NO_CUSTOMERS) {
 		
@@ -70,7 +70,7 @@ public class DefaultBuilding implements Building, Cloneable {
 	 * <p>
 	 * Allows the default elevator to be replaced
 	 * 
-	 * @param NEW_ELEVATOR
+	 * @param NEW_ELEVATOR Elevator to add to the building
 	 */
 	public void setElevator(final Elevator NEW_ELEVATOR) {
 		this.elevator = NEW_ELEVATOR;

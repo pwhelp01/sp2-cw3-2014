@@ -32,8 +32,8 @@ public class ElevatorFactory {
 	 * then go up each floor one and a time to the top. Then come back down one 
 	 * floor at a time again"
 	 * 
-	 * @param NO_FLOORS
-	 * @return RandomCustomer object
+	 * @param NO_FLOORS Number of floors in the building
+	 * @return DefaultElevator Elevator object with the default algorithm
 	 */
 	public Elevator createDefaultElevator(final int NO_FLOORS) {
 		

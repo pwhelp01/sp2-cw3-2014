@@ -89,7 +89,7 @@ public class RandomCustomer implements Customer, Cloneable {
 	/**
 	 * Add / Remove Customer to/from Elevator
 	 * 
-	 * @param IN_ELEVATOR
+	 * @param IN_ELEVATOR State of Customer.  True if in Elevator
 	 */
 	public void setInElevator(final boolean IN_ELEVATOR) {
 		this.inElevator = IN_ELEVATOR;

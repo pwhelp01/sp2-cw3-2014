@@ -177,7 +177,7 @@ public class DefaultElevator implements Elevator {
 	/**
 	 * Get a list of customers to drop off 
 	 * 
-	 * @return
+	 * @return List of customers that want to get off at this floor
 	 */
 	private List<Customer> getCustomersToDrop() {
 		return this.registerList.parallelStream()
@@ -189,7 +189,7 @@ public class DefaultElevator implements Elevator {
 	/**
 	 * Add a customer into the elevator
 	 * 
-	 * @param cust
+	 * @param cust Customer that wants to get in the Elevator
 	 */
 	private void customerJoins(Customer cust) {
 		this.registerList.add(cust);
@@ -201,7 +201,7 @@ public class DefaultElevator implements Elevator {
 	 * Remove a customer from the elevator
 	 * <p>
 	 * Customers leave when they finish their journey
-	 * @param cust
+	 * @param cust Customer that wants to leave the Elevator
 	 */
 	private void customerLeaves(Customer cust) {
 		this.registerList.remove(cust);
