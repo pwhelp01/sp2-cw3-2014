@@ -1,0 +1,153 @@
+/**
+ * Software and Programming II
+ * Coursework: sp2-cw3-2014
+ * 
+ * Pete Whelpton / Mayra Ribeiro
+ * Due Date: 29/12/2014
+ * Lecturer: Keith Mannock
+ */
+ 
+ Brief comparison of the Default and Optimised Elevator algorithms
+===================================================================
+ 
+ The Default elevator algorithm works by starting at the bottom floor, then going
+ up each floor one and a time to the top. Then coming back down one floor at
+ a time again.
+ 
+ The Optimised elevator algorithm works by creating PriorityLists of the floors
+ to be visited, thereby only stopping at floors where necessary.
+ 
+ To test how well the algorithms perform against each other, a class called
+ 'TestHarness' was created that runs both algorithms against buildings with
+ radomised floors (up to 163 floors high, the height of the tallest building in
+ the world - Burj Khalifa in Dubai) and randomised customers (upto 1000 customers
+ in the building).
+ 
+ There are distinct patterns to the results:
+ 
+ High number of floors / Low number of customers
+ -----------------------------------------------
+ There is a low probability of there being a customer on every floor, or wanting
+ to go to every floor.  In this instance, the optimised elevator performs much
+ better than the default elevator that needs to visit every floor.
+ 
+ Low number of floors / High number of customers
+ -----------------------------------------------
+ There is a high probability of there being customers on every floor, or wanting
+ to visit every floor.  In these instances, the default and optimised elevator
+ will likely perform similar / the same number of moves as every floor has to be
+ visited
+ 
+ Equal number of floors / customers
+ ----------------------------------
+ There is a probability of every floor needing to be visited, but usually the
+ optimised elevator will slightly outperform the default elevator
+ 
+ 
+ Raw Data from tests
+ -------------------
+Test    	No 	   	No	 	Default  	Opt
+No	  	Floors  	Cust	  	Moves	  	Moves	 Difference
+1	|	134	|	471	|	264	|	256	|	8
+2	|	65	|	93	|	126	|	99	|	27
+3	|	148	|	212	|	292	|	227	|	65
+4	|	96	|	988	|	188	|	188	|	0
+5	|	28	|	773	|	52	|	52	|	0
+6	|	70	|	577	|	136	|	136	|	0
+7	|	69	|	633	|	134	|	134	|	0
+8	|	153	|	385	|	302	|	281	|	21
+9	|	27	|	745	|	50	|	50	|	0
+10	|	5	|	644	|	8	|	8	|	0
+11	|	20	|	110	|	36	|	36	|	0
+12	|	53	|	568	|	102	|	102	|	0
+13	|	3	|	299	|	4	|	4	|	0
+14	|	134	|	969	|	264	|	263	|	1
+15	|	27	|	75	|	50	|	48	|	2
+16	|	30	|	880	|	56	|	56	|	0
+17	|	90	|	975	|	176	|	176	|	0
+18	|	152	|	484	|	300	|	287	|	13
+19	|	155	|	721	|	306	|	302	|	4
+20	|	10	|	458	|	18	|	18	|	0
+21	|	116	|	98	|	228	|	132	|	96
+22	|	120	|	288	|	236	|	216	|	20
+23	|	141	|	603	|	278	|	274	|	4
+24	|	92	|	362	|	180	|	176	|	4
+25	|	118	|	612	|	232	|	230	|	2
+26	|	33	|	303	|	62	|	62	|	0
+27	|	120	|	934	|	236	|	236	|	0
+28	|	135	|	15	|	255	|	28	|	227
+29	|	71	|	686	|	138	|	138	|	0
+30	|	132	|	656	|	260	|	259	|	1
+31	|	161	|	47	|	308	|	78	|	230
+32	|	55	|	457	|	106	|	106	|	0
+33	|	128	|	957	|	252	|	252	|	0
+34	|	55	|	97	|	105	|	86	|	19
+35	|	83	|	973	|	162	|	162	|	0
+36	|	56	|	919	|	108	|	108	|	0
+37	|	148	|	859	|	292	|	292	|	0
+38	|	98	|	382	|	192	|	188	|	4
+39	|	161	|	4	|	272	|	8	|	264
+40	|	25	|	468	|	46	|	46	|	0
+41	|	112	|	680	|	220	|	220	|	0
+42	|	60	|	683	|	116	|	116	|	0
+43	|	149	|	935	|	294	|	294	|	0
+44	|	143	|	536	|	282	|	277	|	5
+45	|	126	|	87	|	248	|	133	|	115
+46	|	127	|	790	|	250	|	250	|	0
+47	|	97	|	133	|	190	|	140	|	50
+48	|	153	|	256	|	302	|	240	|	62
+49	|	143	|	346	|	282	|	256	|	26
+50	|	33	|	621	|	62	|	62	|	0
+51	|	136	|	329	|	268	|	243	|	25
+52	|	151	|	782	|	298	|	297	|	1
+53	|	90	|	190	|	176	|	156	|	20
+54	|	92	|	793	|	180	|	180	|	0
+55	|	94	|	10	|	167	|	18	|	149
+56	|	110	|	805	|	216	|	216	|	0
+57	|	137	|	655	|	270	|	269	|	1
+58	|	112	|	348	|	220	|	212	|	8
+59	|	8	|	812	|	14	|	14	|	0
+60	|	128	|	884	|	252	|	252	|	0
+61	|	117	|	74	|	230	|	111	|	119
+62	|	51	|	797	|	98	|	98	|	0
+63	|	61	|	275	|	118	|	116	|	2
+64	|	108	|	933	|	212	|	212	|	0
+65	|	8	|	338	|	14	|	14	|	0
+66	|	70	|	804	|	136	|	136	|	0
+67	|	63	|	295	|	122	|	122	|	0
+68	|	150	|	866	|	296	|	295	|	1
+69	|	161	|	529	|	318	|	311	|	7
+70	|	147	|	417	|	290	|	269	|	21
+71	|	161	|	933	|	318	|	318	|	0
+72	|	78	|	723	|	152	|	152	|	0
+73	|	144	|	814	|	284	|	280	|	4
+74	|	105	|	64	|	204	|	94	|	110
+75	|	95	|	218	|	186	|	168	|	18
+76	|	16	|	420	|	28	|	28	|	0
+77	|	136	|	273	|	268	|	233	|	35
+78	|	39	|	798	|	74	|	74	|	0
+79	|	20	|	493	|	36	|	36	|	0
+80	|	111	|	759	|	218	|	218	|	0
+81	|	96	|	991	|	188	|	188	|	0
+82	|	72	|	572	|	140	|	140	|	0
+83	|	82	|	94	|	160	|	103	|	57
+84	|	108	|	976	|	212	|	212	|	0
+85	|	30	|	680	|	56	|	56	|	0
+86	|	88	|	861	|	172	|	172	|	0
+87	|	32	|	422	|	60	|	60	|	0
+88	|	31	|	491	|	58	|	58	|	0
+89	|	65	|	837	|	126	|	126	|	0
+90	|	125	|	859	|	246	|	246	|	0
+91	|	137	|	872	|	270	|	270	|	0
+92	|	88	|	428	|	172	|	171	|	1
+93	|	72	|	566	|	140	|	140	|	0
+94	|	33	|	327	|	62	|	62	|	0
+95	|	162	|	772	|	320	|	319	|	1
+96	|	162	|	989	|	320	|	318	|	2
+97	|	33	|	613	|	62	|	62	|	0
+98	|	24	|	597	|	44	|	44	|	0
+99	|	82	|	824	|	160	|	160	|	0
+100	|	66	|	789	|	128	|	128	|	0
+ 
+ 
+ 

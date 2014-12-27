@@ -60,7 +60,7 @@ public abstract class AbstractElevator implements Elevator {
 	 * Abstract Elevator
 	 * 
 	 * @param NO_FLOORS Number of floors in the parent building
-	 * @exception IllegalArgumentException Invalid number of floors (e.g. < 1) provided
+	 * @exception IllegalArgumentException Invalid number of floors (e.g. &lt; 1) provided
 	 */
 	public AbstractElevator(final int NO_FLOORS) {
 		

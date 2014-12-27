@@ -19,29 +19,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Test Unit for DefaultElevator
+ * Test Unit for OptimisedElevator
  * 
  * @author pete
  *
  */
-public class DefaultElevatorTest {
-	
+public class OptimisedElevatorTest {
 	private Elevator elev;
 	private int NO_FLOORS = 20;
 	
 	/**
-	 * Instantiate a DefaultBuilding for each test
+	 * Instantiate a OptimisedElevator for each test
 	 */
 	@Before
 	public void setup() {
 
 		ElevatorFactory elevFact = new ElevatorFactory();
-		elev = elevFact.createDefaultElevator(NO_FLOORS);
+		elev = elevFact.createOptimisedElevator(NO_FLOORS);
 		
 	}
 	
 	/**
-	 * Tear down the DefaultBuilding after each test
+	 * Tear down the OptimisedElevator after each test
 	 */
 	@After
 	public void tearDown() {

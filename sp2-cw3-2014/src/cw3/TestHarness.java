@@ -1,3 +1,12 @@
+/**
+ * Software and Programming II
+ * Coursework: sp2-cw3-2014
+ * 
+ * Pete Whelpton / Mayra Ribeiro
+ * Due Date: 29/12/2014
+ * Lecturer: Keith Mannock
+ */
+
 package cw3;
 
 import java.util.ArrayList;
@@ -6,14 +15,25 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
+/**
+ * Scrappy class to test the algorithms head-to-head 100 times
+ * @author pete
+ *
+ */
 public class TestHarness {
 
+	/**
+	 * Create a new TestHarness
+	 */
 	public TestHarness() {
 		
 		
 	}
-
+	
+	/**
+	 * Run TestHarness class
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		int[] noFloors = new int[100];
