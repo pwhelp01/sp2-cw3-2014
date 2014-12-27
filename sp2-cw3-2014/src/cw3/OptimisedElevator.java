@@ -11,24 +11,37 @@ package cw3;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-
+/**
+ * Elevator object containing the optimised algorithm
+ * <p>
+ * The optimised Elevator maintains priority queues of the floors that
+ * customers need to be collected / delivered to, and only stops at those
+ * floors
+ * 
+ * @author pete
+ *
+ */
 public class OptimisedElevator extends AbstractElevator {
 
 	/* Properties */
 	Queue<Integer> goingUpQueue = new PriorityQueue<Integer>();
 	Queue<Integer> goingDownQueue = new PriorityQueue<Integer>(Collections.reverseOrder());
+	int highestFloorToVisit;
 	
 	
 	/* Constructor */
+	/**
+	 * Creates a new OptimisedElevator object
+ 	 *
+	 * @param NO_FLOORS Number of floors in parent building
+	 */
 	public OptimisedElevator(final int NO_FLOORS) {
 		super(NO_FLOORS);
 	}
@@ -52,6 +65,7 @@ public class OptimisedElevator extends AbstractElevator {
 		/* Get queue of Customers going down */
 		this.goingDownQueue = this.getGoingDownQueue(CUSTOMERS);
 
+		this.goingDownQueue.forEach(i -> System.out.println(i.toString()));
 		
 		/* Call parent start() method */
 		super.start(CUSTOMERS);
@@ -79,13 +93,14 @@ public class OptimisedElevator extends AbstractElevator {
 		/* If the lift is going UP but there are no more floors to visit */
 		else if(this.direction == directions.UP && this.goingUpQueue.isEmpty()) {
 				this.direction = directions.DOWN;
+				if(this.goingDownQueue.peek() == this.currentFloor) {
+					this.goingDownQueue.remove();
+				}
+				
 		}
 		
 		/* If the lift is going down, move to the floor below */
 		if(this.direction == directions.DOWN && !this.goingDownQueue.isEmpty()) {
-			if(this.goingDownQueue.peek() == this.currentFloor) {
-				this.goingDownQueue.remove();
-			}
 			this.currentFloor = this.goingDownQueue.peek();
 			this.goingDownQueue.remove();
 			this.moves++;
@@ -125,7 +140,11 @@ public class OptimisedElevator extends AbstractElevator {
 	}
 
 	
-	
+	/**
+	 * Create a queue of floors the Elevator needs to visit on the way DOWN
+	 * @param CUSTOMERS List of all Customers in the Building
+	 * @return Queue of floors to visit in order
+	 */
 	private Queue<Integer> getGoingDownQueue(final List<Customer> CUSTOMERS) {
 		
 		/* Get a stream of all customers going up */
@@ -134,21 +153,48 @@ public class OptimisedElevator extends AbstractElevator {
 											 .collect(Collectors.toList());
 		
 		/* Get the 'going down' customers' start and end floors, so we know where to stop */
-		IntStream currentFloors = goingDown.parallelStream()
+		IntStream currentFloors = goingDown.stream()
 										   .mapToInt(Customer::getCurrentFloor);
-		IntStream destinationFloors = goingDown.parallelStream()
+		IntStream destinationFloors = goingDown.stream()
 											   .mapToInt(Customer::getDestinationFloor);
 		
-		/* Combine, reverse sort and make distinct the stream and return as a queue */
-		Queue<Integer> result = new PriorityQueue<Integer>(Collections.reverseOrder()); 
+
+		/* Combine, reverse sort and make distinct the stream and return as a queue */ 
+		Queue<Integer> result = new PriorityQueue<Integer>(Collections.reverseOrder());  
+				 
+		IntStream.concat(currentFloors, destinationFloors) 
+				 .distinct() 
+				 .boxed() 
+				 .forEach(i -> result.add(i)); 
+				 
+		return result; 
+
+	}
+	
+	
+
+	/**
+	 * Get a list of customers to pickup from a list of customers on the same floor
+	 * 
+	 * @param CUSTOMERS List of customers on one floor to check for those who need
+	 * picking up
+	 * @return List of customers to pick up
+	 */
+	@Override
+	protected List<Customer> getCustomersToPickup(final List<Customer> CUSTOMERS) {
 		
-		IntStream.concat(currentFloors, destinationFloors)
-				 .distinct()
-				 .boxed()
-				 .forEach(i -> result.add(i));
-		
-		return result;
-		
+		/* Get customers going in the same direction as the lift, if it is going up */
+		if(this.direction == directions.UP && !this.goingUpQueue.isEmpty()){ 
+			return CUSTOMERS.parallelStream()
+							.filter(c -> c.getDestinationFloor() > this.currentFloor)
+							.collect(Collectors.toCollection(LinkedList::new));
+		}
+		/* Get customers going in the same direction as the lift, if it is going down */
+		else {
+			return CUSTOMERS.parallelStream()
+							.filter(c -> c.getDestinationFloor() < this.currentFloor)
+							.collect(Collectors.toCollection(LinkedList::new));
+		}
 	}
 	
 }

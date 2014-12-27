@@ -17,9 +17,9 @@ public class TestHarness {
 		BuildingFactory buildFact = new BuildingFactory();
 		ElevatorFactory elevFact = new ElevatorFactory();
 		
-		Building b1 = buildFact.createDefaultBuilding(10, 8);
+		Building b1 = buildFact.createDefaultBuilding(20, 30);
 		Building b2 = b1.clone();
-		b2.setElevator(elevFact.createOptimisedElevator(10));
+		b2.setElevator(elevFact.createOptimisedElevator(20));
 		
 		
 		System.out.println(b1);
@@ -27,6 +27,8 @@ public class TestHarness {
 		b1.startElevator();
 		
 		System.out.println();
+		
+		System.out.println(b2);
 		System.out.println("Starting Optimised Elevator");
 		b2.startElevator();
 		

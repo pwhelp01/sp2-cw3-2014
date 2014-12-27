@@ -13,16 +13,39 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ * Abstract Elevator
+ * <p>
+ * Contains the methods / properties common to all Elevator objects
+ * 
+ * @author pete
+ *
+ */
 public abstract class AbstractElevator implements Elevator {
 	
 	/* Properties */
 	protected final int NUM_OF_FLOORS;
 	protected List<Customer> registerList = new LinkedList<Customer>();
 	protected int currentFloor;
-	protected enum directions {UP, DOWN};
 	protected directions direction;
 	protected int moves;
+	
+	/* Enumerations */
+	/**
+	 * Directions the elevator can travel
+	 * @author pete
+	 *
+	 */
+	protected enum directions {
+		/**
+		 * Elevator is traveling up
+		 */
+		UP, 
+		/**
+		 * Elevator is travelling down
+		 */
+		DOWN
+	};
 	
 	/* Initialisation Block */
 	{
@@ -31,11 +54,19 @@ public abstract class AbstractElevator implements Elevator {
 	}
 
 	
+	/* Methods*/
+	/*Constructors*/
+	/**
+	 * Abstract Elevator
+	 * 
+	 * @param NO_FLOORS Number of floors in the parent building
+	 */
 	public AbstractElevator(final int NO_FLOORS) {
 		this.NUM_OF_FLOORS = NO_FLOORS;
 	}
 	
 	
+	/* Other Methods*/
 	/**
 	 * Starts the elevator using the default algorithm
 	 * <p>
@@ -54,22 +85,22 @@ public abstract class AbstractElevator implements Elevator {
 			System.out.println("Current Floor=" + this.currentFloor);
 			List<Customer> customersOnFloor = this.getCustomersOnFloor(CUSTOMERS);
 
-			/* Check the customers on this floor for those going in the same
-			 * direction as the elevator, and pick them up
-			 */
-			List<Customer> customersToPickup = this.getCustomersToPickup(customersOnFloor);
-			System.out.print("Picking up customers: ");
-			customersToPickup.forEach(c -> System.out.print(c.getId() + " "));
-			customersToPickup.forEach(c -> this.customerJoins(c));
-			
 			/* Check customers already in the elevator if they want to get off
 			 * at this floor, and if so drop them
 			 */
-			System.out.println();
 			List<Customer> customersToDrop = this.getCustomersToDrop();
 			System.out.print("Droping off customers: ");
 			customersToDrop.forEach(c -> System.out.print(c.getId() + " "));
 			customersToDrop.forEach(c -> this.customerLeaves(c));
+			
+			/* Check the customers on this floor for those going in the same
+			 * direction as the elevator, and pick them up
+			 */
+			System.out.println();
+			List<Customer> customersToPickup = this.getCustomersToPickup(customersOnFloor);
+			System.out.print("Picking up customers: ");
+			customersToPickup.forEach(c -> System.out.print(c.getId() + " "));
+			customersToPickup.forEach(c -> this.customerJoins(c));
 			
 			/* Move elevator to next floor */
 			System.out.println();
@@ -78,12 +109,29 @@ public abstract class AbstractElevator implements Elevator {
 		
 	}
 	
-	
+	/**
+	 * Abstract method to move the elevator one stop
+	 */
 	protected abstract void move();
-	
+
+	/**
+	 * Get the number of moves made by the elevator
+	 * 
+	 * @return Number of moves
+	 */
 	public int getMoves() {
 		return this.moves;
 	}
+	
+	/**
+	 * Get the current floor the elevator is on
+	 * 
+	 * @return Current floor
+	 */
+	public int getCurrentFloor() {
+		return this.currentFloor;
+	}
+	
 	
 	/**
 	 * Get a list of all customers on the same floor as the elevator

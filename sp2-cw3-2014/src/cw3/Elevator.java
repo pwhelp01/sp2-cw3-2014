@@ -20,7 +20,28 @@ import java.util.List;
  */
 public interface Elevator {
 
+	/**
+	 * Starts the elevator using the default algorithm
+	 * <p>
+	 * Start at the bottom floor, then go up each floor one and a time to the top.
+	 * Then come back down one floor at a time again
+	 * 
+	 * @param CUSTOMERS List of customers in the building waiting for the elevator
+	 */
 	public void start(List<Customer> customers);
+	
+	/**
+	 * Get the number of moves made by the elevator
+	 * 
+	 * @return Number of moves
+	 */
 	public int getMoves();
+	
+	/**
+	 * Get the current floor the elevator is on
+	 * 
+	 * @return Current floor
+	 */
+	public int getCurrentFloor();
 
 }

@@ -23,7 +23,6 @@ public class DefaultBuilding implements Building, Cloneable {
 	private int noFloors;
 	private int noCustomers;
 	private List<Customer> customers = new ArrayList<Customer>();
-	private List<Floor> floors = new ArrayList<Floor>();
 	private Elevator elevator;
 	
 
@@ -45,6 +44,7 @@ public class DefaultBuilding implements Building, Cloneable {
 		
 		/* Set the number of floors this building has*/
 		this.noFloors = NO_FLOORS;
+		this.noCustomers = NO_CUSTOMERS;
 		
 		/* Create random customers */
 		for(int i = 0; i < NO_CUSTOMERS; i++) {
@@ -86,7 +86,11 @@ public class DefaultBuilding implements Building, Cloneable {
 		return this.customers;
 	}
 	
-	
+	/**
+	 * Get the number of moves made by the elevator
+	 * 
+	 * @return Number of moves made by the building's elevator
+	 */
 	public int getElevatorMoves() {
 		return this.elevator.getMoves();
 	}

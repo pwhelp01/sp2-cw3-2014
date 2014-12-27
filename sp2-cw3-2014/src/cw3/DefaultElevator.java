@@ -9,10 +9,6 @@
 
 package cw3;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 /**
  * Elevator object containing the default algorithm
@@ -39,7 +35,8 @@ public class DefaultElevator extends AbstractElevator {
 		
 	}
 	
-
+	
+	/*Other Methods*/
 	/**
 	 * Move the elevator to the next floor in the current direction
 	 * <p>
@@ -52,6 +49,9 @@ public class DefaultElevator extends AbstractElevator {
 		if(this.direction == directions.UP) {
 			if(this.currentFloor < this.NUM_OF_FLOORS) {
 				this.currentFloor++;
+				if(this.currentFloor == 13) {
+					this.currentFloor++;
+				}
 				this.moves++;
 			}
 			/* If the lift is going UP, but has reached the top floor, turn around */
@@ -63,6 +63,9 @@ public class DefaultElevator extends AbstractElevator {
 		if(this.direction == directions.DOWN) {
 			if(this.currentFloor > 1) {
 				this.currentFloor--;
+				if(this.currentFloor == 13) {
+					this.currentFloor--;
+				}
 				this.moves++;
 			}
 		}
