@@ -64,8 +64,6 @@ public class OptimisedElevator extends AbstractElevator {
 		
 		/* Get queue of Customers going down */
 		this.goingDownQueue = this.getGoingDownQueue(CUSTOMERS);
-
-		this.goingDownQueue.forEach(i -> System.out.println(i.toString()));
 		
 		/* Call parent start() method */
 		super.start(CUSTOMERS);

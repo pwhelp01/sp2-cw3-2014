@@ -35,8 +35,14 @@ public class DefaultBuilding implements Building, Cloneable {
 	 * 
 	 * @param NO_FLOORS The number of floors 
 	 * @param NO_CUSTOMERS The number of customers to populate the building with
+	 * @exception IllegalArgumentException Invalid number of floors / customers (e.g. < 1) provided
 	 */
-	public DefaultBuilding(final int NO_FLOORS, final int NO_CUSTOMERS) {
+	public DefaultBuilding(final int NO_FLOORS, final int NO_CUSTOMERS) throws IllegalArgumentException {
+		
+		/* Check building has floors and customers */
+		if(NO_FLOORS < 1 || NO_CUSTOMERS < 1) {
+			throw new IllegalArgumentException();
+		}
 		
 		/* Create factories to build customers and elevator */
 		CustomerFactory custFactory = new CustomerFactory();

@@ -69,7 +69,7 @@ public class BuildingFactoryTest {
 	public void testInvalidCreateDefaultBuilding() throws IllegalArgumentException{
 		
 		final int NO_FLOORS = -1;
-		final int NO_CUSTOMERS = 10;
+		final int NO_CUSTOMERS = -1;
 		
 		Building b = buildFact.createDefaultBuilding(NO_FLOORS, NO_CUSTOMERS);
 		

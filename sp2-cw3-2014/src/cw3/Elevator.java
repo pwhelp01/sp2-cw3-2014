@@ -26,7 +26,7 @@ public interface Elevator {
 	 * Start at the bottom floor, then go up each floor one and a time to the top.
 	 * Then come back down one floor at a time again
 	 * 
-	 * @param CUSTOMERS List of customers in the building waiting for the elevator
+	 * @param customers List of customers in the building waiting for the elevator
 	 */
 	public void start(List<Customer> customers);
 	

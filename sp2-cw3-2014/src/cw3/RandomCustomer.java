@@ -44,9 +44,15 @@ public class RandomCustomer implements Customer, Cloneable {
 	 * RandomCustomers have random current and destination floors
 	 * 
 	 * @param NO_FLOORS The number of floors in the building
+	 * @exception IllegalArgumentException Invalid number of floors (e.g. < 1) provided
 	 */
-	public RandomCustomer(final int NO_FLOORS) {
+	public RandomCustomer(final int NO_FLOORS) throws IllegalArgumentException {
 		
+		/* Check building has floors */
+		if(NO_FLOORS < 1) {
+			throw new IllegalArgumentException();
+		}
+
 		/* Constant for the minimum number of floors */
 		final int MIN = 1;
 		
