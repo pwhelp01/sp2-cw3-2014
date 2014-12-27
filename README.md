@@ -1,7 +1,7 @@
 sp2-cw3-2014
 ============
 
-Software and Programming II : Coursework 2
+Software and Programming II : Coursework 3
 ------------------------------------------
 
 Submitted by Pete Whelpton (pwhelp01 / 12828513) Due date: 29/12/2014 Lecturer: Keith Mannock
